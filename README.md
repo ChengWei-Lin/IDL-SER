@@ -1,2 +1,2 @@
-# IDL-SER
-For Introduction to Deep Learning for Speech and Text Processing. This coding project is about speech emotion recognition. Given the log mel frequency features, the goal is to predict this speech's "activation" and "valence" is either 0 or 1 (binary).
+# Introduction to Deep Learning for Speech and Text Processing
+For Introduction to Deep Learning for Speech and Text Processing. This coding project is about speech emotion recognition. Given the log mel frequency features, the goal is to predict this speech's "activation" and "valence" is either 0 or 1 (binary). I attempted CNN and Attentive CNN as Professor Thang Vu's 2017 paper (see https://arxiv.org/abs/1706.00612). On top of it, I tried BiLSTM and transformer. After running hyperparamter search with wandb, I choose the lowest development loss for submitting the final results. It performs 47% accuracy on 1st stage testing set. 
