@@ -1,0 +1,58 @@
+program: project/train_sweep.py
+method: bayes  # You can also use "grid" or "random" depending on your needs
+metric:
+  name: dev_loss
+  goal: minimize
+parameters:
+  # General training parameters
+  batch_size:
+    values: [16, 32, 64, 128]
+  learning_rate:
+    distribution: uniform
+    min: 0.0001
+    max: 0.01
+  epochs:
+    value: 300
+  output_dir:
+    value: "./outputs"
+  run_id:
+    value: "sweep_run"
+  dropout:
+    distribution: uniform
+    min: 0.2
+    max: 0.8
+  scheduler:
+    value: "ExponentialLR"
+  gamma:
+    distribution: uniform
+    min: 0.9
+    max: 0.99
+
+  # Model selection (choose one of the following models)
+  model_name:
+    values: ["TransformerDualClassifier"]
+
+  # Parameters for CNN and ACNN models
+  num_filters:
+    values: [32, 64, 128]
+  output_size:
+    value: 1
+  kernel_sizes:
+    value: [5, 7]
+  pool_kernel:
+    value: 30
+  pool_stride:
+    value: 3
+
+  # Parameters for TransformerDualClassifier
+  model_dim:
+    values: [64, 128]
+  num_heads:
+    values: [2, 3, 4, 5, 6, 7, 8]
+  num_layers:
+    values: [2, 3, 4, 5, 6, 7, 8]
+
+  # Parameters for BiLSTMModel
+  hidden_dim:
+    values: [64, 128, 256]
+  # Note: 'num_layers' is shared between TransformerDualClassifier and BiLSTMModel.
